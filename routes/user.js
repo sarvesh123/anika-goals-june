@@ -58,7 +58,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login', passport.authenticate('local.login', {
 	failureRedirect: '/user/login',
 	failureFlash: true
-}), function(req, req, next) {
+}), function(req, res, next) {
 	if(req.session.oldUrl) {
 		var oldUrl = req.session.oldUrl;
 		req.session.oldUrl = null;
