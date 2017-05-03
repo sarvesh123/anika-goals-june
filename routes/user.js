@@ -40,8 +40,8 @@ router.get('/register', function(req, res, next) {
 router.post('/register', passport.authenticate('local.register', {
 	failureRedirect: '/user/register',
 	failureFlash: true
-}), function(req, req, next) {
-	if(req.session.oldUrl) {
+}), function(req, res, next) {
+	if(req.session && req.session.oldUrl) {
 		var oldUrl = req.session.oldUrl;
 		req.session.oldUrl = null;
 		res.redirect(oldUrl);
